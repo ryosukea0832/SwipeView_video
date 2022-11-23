@@ -36,13 +36,11 @@ Window {
                 anchors.centerIn: parent
                 text: "video1"
             }
-
         }
         Page {
             title: qsTr("video2")
             MediaPlayer {
                 id: mediaplayer
-//                autoPlay: true
                 source: "file:/home/ryou/Videos/塩焼き.avi"
                 videoOutput: [v1]
             }
@@ -64,6 +62,21 @@ Window {
         }
         Page {
             title: qsTr("video3")
+            Video {
+                id: video3
+                anchors.fill: parent
+                source: "file:/home/ryou/Videos/塩焼き.avi"
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                       video3.playbackState == MediaPlayer.PlayingState ? video3.pause() : video3.play()
+                    }
+                    onDoubleClicked: {
+                        video3.stop()
+                    }
+                }
+            }
             Text{
                 anchors.centerIn: parent
                 text: "video3"
